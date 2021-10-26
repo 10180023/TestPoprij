@@ -1,0 +1,33 @@
+﻿<Window x:Class="TestPoprij.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestPoprij"
+        mc:Ignorable="d"
+        Title="Попрыженок" Height="700" Width="1100" Icon="Poprig.ico"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="700" MinWidth="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Grid.ColumnSpan="2"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <Image Source="Poprig.ico" Margin="5"/>
+            <Label Content="Попрыженок" VerticalContentAlignment="Center"/>
+        </StackPanel>
+        <Button Name="btnBack" Content="Назад" Grid.Column="1" Click="btnBack_Click"/>
+        <Button Name="btnExit" Content="Выход" Grid.Column="1" Grid.Row="2" Click="btnExit_Click"/>
+
+        <Frame Name="MainFrame" Grid.Row="1" Grid.ColumnSpan="2" ContentRendered="Window_ContentRendered" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

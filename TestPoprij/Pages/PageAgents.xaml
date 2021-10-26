@@ -1,0 +1,76 @@
+﻿<Page x:Class="TestPoprij.Pages.PageAgents"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TestPoprij.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageAgents" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Агенты" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" Margin="5" TextChanged="tbFinder_TextChanged" GotFocus="tbFinder_GotFocus"/>
+        <ComboBox Name="cbSort" Grid.Column="1" Grid.Row="1" Margin="5" SelectionChanged="cbSort_SelectionChanged"/>
+        <ComboBox Name="cbFilter" Grid.Column="3" Grid.Row="1" Margin="5" SelectionChanged="cbFilter_SelectionChanged"/>
+        <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <RadioButton Name="rbAsc" Content="По возрастанию" IsChecked="True" Click="rbAsc_Click" />
+            <RadioButton Content="По убыванию" Click="RadioButton_Click"/>
+        </StackPanel>
+
+        <ListView Name="lvAgents" Grid.Row="2" Grid.ColumnSpan="4">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Name="Logo" Source="{Binding LogoAgent}" Width="120" Grid.Column="0"/>
+                        <StackPanel Grid.Column="1">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding AgentType}"/>
+                                <TextBlock Text=" | "/>
+                                <TextBlock Text="{Binding Title}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBlock Text="{Binding QQQ}"/>
+                                <TextBlock Text=" продаж за год"/>
+                            </StackPanel>
+                            <TextBlock Text="{Binding Phone}"/>
+                            <StackPanel>
+                                <TextBlock Text="Приоритетность: "/>
+                                <TextBlock Text="{Binding Priority}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Button Name="btnEdit" Content="Редактировать" Grid.Column="2" Click="btnEdit_Click"/>
+                        <StackPanel Orientation="Horizontal" Grid.Column="3">
+                            <TextBlock Text="00"/>
+                            <TextBlock Text="%"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Name="btnAdd" Content="Добавить" Grid.Row="3" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnAdd_Click"/>
+    </Grid>
+</Page>
